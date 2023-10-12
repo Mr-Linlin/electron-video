@@ -12,5 +12,37 @@
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "include": ["src"]
+  "baseUrl": "./",
+  "paths": {
+    "@": [
+      "src"
+    ],
+    "@/*": [
+      "./src/*"
+    ],
+    "comps/*": [
+      "src/components/*"
+    ],
+    "views/*": [
+      "src/views/*"
+    ],
+    "model/*": [
+      "./src/model/*"
+    ],
+    " store/*": [
+      " ./src/store/*"
+    ]
+  },
+  "include": [
+    "src",
+    "vite.renderer.config.ts",
+    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "./src/model/**/*",
+    "env.d.ts",
+    "canvas-icon.d.ts"
+  ]
 }
