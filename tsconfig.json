@@ -36,6 +36,7 @@
   "include": [
     "src",
     "vite.renderer.config.ts",
+    "vite.main.config.ts",
     "src/**/*",
     "src/**/*.ts",
     "src/**/*.d.ts",

@@ -1,5 +1,8 @@
 import { defineConfig } from "vite";
 import VuePlugin from "@vitejs/plugin-vue";
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import path from 'path'
 const resolve = (dir: string) => path.join(__dirname, dir)
 
@@ -7,7 +10,12 @@ const resolve = (dir: string) => path.join(__dirname, dir)
 // https://vitejs.dev/config
 export default defineConfig({
   base: './',
-  plugins: [VuePlugin()],
+  plugins: [VuePlugin(), AutoImport({
+    resolvers: [ElementPlusResolver()],
+  }),
+  Components({
+    resolvers: [ElementPlusResolver()],
+  })],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
