@@ -1,9 +1,21 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
+
   {
     path: '/',
-    component: () => import('../views/home/index.vue'),
+    component: () => import('../views/layout/index.vue'),
+    redirect: '/home',
+    children: [
+      {
+        path: '/home',
+        component: () => import('../views/home/index.vue')
+      }
+      , {
+        path: '/detail',
+        component: () => import('../views/detail/index.vue')
+      }
+    ]
   },
   // {
   //   path: '/login',
@@ -18,7 +30,7 @@ const router = createRouter({
 })
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
-  document.title = '酷我'
+  document.title = '酷我视频'
   next()
 
   // const token = localStorage.getItem('token')

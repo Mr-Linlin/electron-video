@@ -1,77 +1,72 @@
 <template>
   <div class="home">
-    <div class="sidebar">
-      <div class="logo flex justify-center mt-3">
-        <img src="~@/assets/img/logo.png" alt="" srcset="" />
-      </div>
+    <div class="banner">
+      <el-carousel :interval="4000" type="card" height="200px">
+        <el-carousel-item
+          v-for="(item, index) in bannerList"
+          :key="index"
+          @click="onDetail(item.id)"
+        >
+          <img :src="item.url" alt="" srcset="" />
+        </el-carousel-item>
+      </el-carousel>
     </div>
-    <header class="flex items-center justify-between">
-      <div class="search ml-6">搜索栏</div>
-      <div class="setting mr-6 flex cursor-pointer text-white">
-        <div>
-          <el-icon @click="setWindow('Minimize')"><Minus /></el-icon>
-        </div>
-        <div class="mx-6" @click="setFullScreen">
-          <el-icon><FullScreen /></el-icon>
-        </div>
-        <div>
-          <el-icon @click="setWindow('CLosed')"><CloseBold /></el-icon>
-        </div>
-      </div>
-    </header>
   </div>
 </template>
 <script lang="ts" setup>
-import { CloseBold, FullScreen, Minus } from '@element-plus/icons-vue';
-import ipcMainService from '@/service/IpcMainService';
-import { ref } from 'vue';
-const isScreen = ref(false);
-// 软件全屏
-const setFullScreen = () => {
-  isScreen.value = !isScreen.value;
-  const type = isScreen.value ? 'Maximize' : 'WillResize';
-  ipcMainService.sendIpcMsg({ type });
-};
-// 操作窗口
-const setWindow = (type: String) => {
-  ipcMainService.sendIpcMsg({ type });
+import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const bannerList = reactive([
+  {
+    url: 'https://1vimg.hitv.com/100/2307/2818/1840/ZErDNyq0YW7I/8pqYAK.jpg',
+    id: '156255',
+  },
+  {
+    url: 'https://p.sda1.dev/9/493da6aa49302d66525bf4d132f8476c/625fc574672ba.jpg',
+    id: '156255',
+  },
+  {
+    url: 'https://images.weserv.nl/?url=https://pic1.iqiyipic.com/lequ/common/lego/20230617/6c9f77af269f4a4d80ff2daa640b517e.jpg',
+    id: '156255',
+  },
+  {
+    url: 'https://puui.qpic.cn/tv/0/1250167449_1920800/0',
+    id: '156255',
+  },
+]);
+const onDetail = (id: any) => {
+  router.push({
+    path: '/detail',
+    query: {
+      id,
+    },
+  });
 };
 </script>
 <style scoped lang="scss">
 .home {
-  color: #fff;
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 10;
-    background: #16161a;
-    border-right: 1px solid #25252b;
-    width: 200px;
-    .logo {
+  .banner {
+    img {
       height: 100%;
-      img {
-        width: 118px;
-        height: 44px;
-      }
+      width: 100%;
     }
   }
-  header {
-    position: fixed;
-    top: 0;
-    left: 200px;
-    z-index: 10;
-    width: calc(100% - 200px);
-    height: 64px;
-    background-color: #1a1c1f;
-    .logo {
-      height: 100%;
-      img {
-        width: 118px;
-        height: 44px;
-      }
-    }
-  }
+}
+.el-carousel__item h3 {
+  color: #475669;
+  opacity: 0.75;
+  margin: 0;
+  text-align: center;
+  min-width: 836px;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
 }
 </style>

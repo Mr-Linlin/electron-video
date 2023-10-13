@@ -5,7 +5,7 @@ interface IpcMessage {
   type: String
   // message: String
 }
-// 添加一个通信api
+// 添加一个通信api,exposeInMainWorld可以跳过上下文隔离
 contextBridge.exposeInMainWorld('ipcMainService', {
   //发送消息通信到主线程
   sendIpcMsg: (obj: IpcMessage) => {
