@@ -8,6 +8,8 @@ specifiers:
   '@electron-forge/maker-zip': ^6.4.2
   '@electron-forge/plugin-auto-unpack-natives': ^6.4.2
   '@electron-forge/plugin-vite': ^6.4.2
+  '@element-plus/icons-vue': ^2.1.0
+  '@types/qs': ^6.9.8
   '@typescript-eslint/eslint-plugin': ^6.0.0
   '@typescript-eslint/parser': ^6.0.0
   '@vitejs/plugin-vue': ^4.4.0
@@ -35,6 +37,7 @@ specifiers:
   vue-router: ^4.2.5
 
 dependencies:
+  '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/2.1.0_vue@3.3.4
   axios: registry.npmmirror.com/axios/1.5.1
   electron-squirrel-startup: registry.npmmirror.com/electron-squirrel-startup/1.0.0
   element-plus: registry.npmmirror.com/element-plus/2.3.14_vue@3.3.4
@@ -56,6 +59,7 @@ devDependencies:
   '@electron-forge/maker-zip': registry.npmmirror.com/@electron-forge/maker-zip/6.4.2
   '@electron-forge/plugin-auto-unpack-natives': registry.npmmirror.com/@electron-forge/plugin-auto-unpack-natives/6.4.2
   '@electron-forge/plugin-vite': registry.npmmirror.com/@electron-forge/plugin-vite/6.4.2_sass@1.69.3
+  '@types/qs': registry.npmmirror.com/@types/qs/6.9.8
   '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/6.7.5_koniphfrb3un6gzopfd4gyx3vi
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/6.7.5_v45u5lvpo2sekedgoqtp6dtl6u
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/4.4.0_vite@4.4.11+vue@3.3.4
@@ -1171,6 +1175,12 @@ packages:
     version: 20.8.4
     dependencies:
       undici-types: registry.npmmirror.com/undici-types/5.25.3
+    dev: true
+
+  registry.npmmirror.com/@types/qs/6.9.8:
+    resolution: {integrity: sha512-u95svzDlTysU5xecFNTgfFG5RUWu1A9P0VzgpcIiGZA9iraHOdSzcxMxQ55DyeRaGCSxQi7LxXDI4rzq/MYfdg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/qs/-/qs-6.9.8.tgz}
+    name: '@types/qs'
+    version: 6.9.8
     dev: true
 
   registry.npmmirror.com/@types/responselike/1.0.1:

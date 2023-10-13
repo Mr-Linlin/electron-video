@@ -44,6 +44,7 @@
     "src/**/*.vue",
     "./src/model/**/*",
     "env.d.ts",
-    "canvas-icon.d.ts"
+    "canvas-icon.d.ts",
+    "renderer.d.ts"
   ]
 }
