@@ -8,3 +8,4 @@ declare global {
     ipcMainService?: any
   }
 }
+declare module 'vue3-video-play';

@@ -34,6 +34,7 @@ const createWindow = () => {
           break
         case 'CLosed'://关闭窗口
           win.close()
+          app.quit()
           break
       }
     }
