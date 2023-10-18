@@ -6,7 +6,7 @@
       :key="index"
       @click="selectPath(item.path)"
     >
-      <span :class="{ active: index === 2 }">{{ item.name }}</span>
+      <span :class="{ active: index === 0 }">{{ item.name }}</span>
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@ const menuList = ref([
     name: '综艺',
   },
 ]);
-const selectPath = (path: String) => {
+const selectPath = (path: any) => {
   router.push(path);
 };
 </script>

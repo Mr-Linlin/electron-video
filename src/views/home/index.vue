@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="banner">
-      <el-carousel :interval="4000" type="card" height="200px">
+      <el-carousel :interval="4000" type="card" :height="height">
         <el-carousel-item
           v-for="(item, index) in bannerList"
           :key="index"
@@ -11,11 +11,28 @@
         </el-carousel-item>
       </el-carousel>
     </div>
+    <div class="main-wrap">
+      <div class="info-item my-10" v-for="item in homeInfo" :key="item.id">
+        <div class="header flex justify-between items-center h-20">
+          <div class="title cursor-pointer text-3xl font-extrabold font-mono">
+            {{ item.title }}
+          </div>
+          <div class="move cursor-pointer text-gray-500 mr-3">更多</div>
+        </div>
+        <div class="content flex flex-wrap">
+          <div class="box-item text-center" v-for="v in item.list" :key="v.id">
+            <img :src="v.img" alt="" />
+            <p class="mt-3">{{ v.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import img from '@/assets/img/test.jpg';
 
 const router = useRouter();
 const bannerList = reactive([
@@ -36,6 +53,149 @@ const bannerList = reactive([
     id: '156255',
   },
 ]);
+const homeInfo = reactive([
+  {
+    title: '电视剧',
+    move: 1,
+    id: 1,
+    list: [
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156254',
+      },
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156255',
+      },
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156256',
+      },
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156257',
+      },
+    ],
+  },
+  {
+    title: '电影',
+    move: 1,
+    id: 2,
+    list: [
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156254',
+      },
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156255',
+      },
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156256',
+      },
+      {
+        name: '长风渡',
+        img,
+        score: '4.3',
+        id: '156257',
+      },
+    ],
+  },
+  {
+    title: '动漫',
+    move: 1,
+    id: 3,
+    list: [
+      {
+        name: '海贼王',
+        img: 'https://img.liangzipic.com/upload/vod/20230606-1/b8b6ef574e6df761eef30665bc2d66d9.jpg',
+        score: '4.3',
+        id: '156254',
+      },
+      {
+        name: '斗破苍穹',
+        img,
+        score: '4.3',
+        id: '156255',
+      },
+      {
+        name: '完美世界',
+        img,
+        score: '4.3',
+        id: '156256',
+      },
+      {
+        name: '斗罗大陆',
+        img,
+        score: '4.3',
+        id: '156257',
+      },
+    ],
+  },
+  {
+    title: '综艺',
+    move: 1,
+    id: 3,
+    list: [
+      {
+        name: '海贼王',
+        img,
+        score: '4.3',
+        id: '156254',
+      },
+      {
+        name: '斗破苍穹',
+        img,
+        score: '4.3',
+        id: '156255',
+      },
+      {
+        name: '完美世界',
+        img,
+        score: '4.3',
+        id: '156256',
+      },
+      {
+        name: '斗罗大陆',
+        img,
+        score: '4.3',
+        id: '156257',
+      },
+    ],
+  },
+]);
+const height = ref('');
+onMounted(() => {
+  window.addEventListener('resize', handleResize);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize);
+});
+const handleResize = () => {
+  // 处理窗口大小变化的逻辑
+  if (window.innerWidth > 1600) {
+    height.value = '380px';
+  } else if (window.innerWidth < 800) {
+    height.value = '100px';
+  } else {
+    height.value = '200px';
+  }
+};
 const onDetail = (id: any) => {
   router.push({
     path: '/detail',
@@ -47,10 +207,40 @@ const onDetail = (id: any) => {
 </script>
 <style scoped lang="scss">
 .home {
+  height: 100%;
+  overflow-y: auto;
   .banner {
     img {
       height: 100%;
       width: 100%;
+    }
+  }
+  .main-wrap {
+    // margin-bottom: 100px;
+    .info-item {
+      .header {
+        .title:hover {
+          color: #e50914;
+        }
+      }
+      .content {
+        .box-item {
+          width: calc(12.5% - 18px);
+          margin-right: 1rem;
+          margin-bottom: 1rem;
+          height: auto;
+          cursor: pointer;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+          }
+          img:hover {
+            height: 101%;
+            width: 101%;
+          }
+        }
+      }
     }
   }
 }

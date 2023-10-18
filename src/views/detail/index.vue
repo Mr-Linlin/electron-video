@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
 });
 const options = reactive({
   type: 'm3u8',
-  width: '1080px', //播放器高度
+  width: window.innerWidth / 1.8 + 'px', //播放器高度
   height: '450px', //播放器高度
   color: '#99a9bf', //主题色
   title: '', //视频名称
